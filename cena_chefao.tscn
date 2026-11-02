@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://sclf25d6u7ft"]
+
+[ext_resource type="Texture2D" uid="uid://bl2t4ih3dbml5" path="res://chefao.png" id="1_gxdst"]
+[ext_resource type="Script" uid="uid://crt6kq1to2kts" path="res://script_chefao.gd" id="1_uwolq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb0th"]
+size = Vector2(89, 196.25)
+
+[sub_resource type="Animation" id="Animation_duija"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(987, 74, 159, 265)]
+}
+
+[sub_resource type="Animation" id="Animation_gxdst"]
+resource_name = "andando"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(760, 74, 226, 265), Rect2(987, 74, 159, 265)]
+}
+
+[sub_resource type="Animation" id="Animation_uwolq"]
+resource_name = "atacando"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(73, 425, 224, 306), Rect2(591, 464, 207, 268), Rect2(344, 421, 213, 305), Rect2(859, 466, 257, 276)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"causar_dano_personagem"
+}, {
+"args": [],
+"method": &"voltar_andar"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1ykln"]
+resource_name = "parado"
+length = 1.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(51, 76, 199, 264), Rect2(269, 76, 200, 264), Rect2(475, 76, 196, 264), Rect2(51, 76, 199, 264), Rect2(269, 76, 200, 264), Rect2(475, 76, 196, 264)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"atacar"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duija"]
+_data = {
+&"RESET": SubResource("Animation_duija"),
+&"andando": SubResource("Animation_gxdst"),
+&"atacando": SubResource("Animation_uwolq"),
+&"parado": SubResource("Animation_1ykln")
+}
+
+[node name="Chefao" type="Node2D" unique_id=171596232]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2052264740]
+collision_layer = 4
+script = ExtResource("1_uwolq")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=878548664]
+position = Vector2(-11.075371, 0.874382)
+scale = Vector2(0.75376886, 0.7537689)
+texture = ExtResource("1_gxdst")
+region_enabled = true
+region_rect = Rect2(987, 74, 159, 265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1981743566]
+position = Vector2(-7.0753784, -8.125618)
+shape = SubResource("RectangleShape2D_wb0th")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=1213590902]
+libraries/ = SubResource("AnimationLibrary_duija")
+autoplay = &"parado"
+
+[node name="Timer" type="Timer" parent="CharacterBody2D" unique_id=414810014]
+wait_time = 4.0
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D" unique_id=1144106059]
+position = Vector2(71, 46)
+rect = Rect2(-11, -15, 8, 57)
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="parado"]
+[connection signal="screen_entered" from="CharacterBody2D/VisibleOnScreenNotifier2D" to="CharacterBody2D" method="perseguir"]
+[connection signal="screen_exited" from="CharacterBody2D/VisibleOnScreenNotifier2D" to="CharacterBody2D" method="mudar_direcao"]

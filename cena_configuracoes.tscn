@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bggiqmrj1crl8"]
+
+[ext_resource type="Script" uid="uid://8v7p5a1rkce" path="res://script_configuracoes.gd" id="1_r4fjf"]
+
+[node name="Configuracoes" type="Node2D" unique_id=198991580]
+script = ExtResource("1_r4fjf")
+
+[node name="Label" type="Label" parent="." unique_id=1966675135]
+offset_left = 267.0
+offset_top = 41.0
+offset_right = 853.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 62
+text = "Configurações"
+
+[node name="ButtonVoltar" type="Button" parent="." unique_id=153044296]
+offset_left = 398.0
+offset_top = 212.0
+offset_right = 558.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 52
+text = "Voltar
+"
+
+[connection signal="pressed" from="ButtonVoltar" to="." method="voltar"]

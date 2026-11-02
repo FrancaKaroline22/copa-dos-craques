@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dewhmb7o3v5ih"]
+
+[ext_resource type="Script" uid="uid://qw5c65ecu5v5" path="res://script_game_over.gd" id="1_p4wjp"]
+[ext_resource type="Texture2D" uid="uid://cgmv7blg8t6j" path="res://Imagens_Copas/Game Over_ Brasil 0, Rival 3.png" id="2_p4wjp"]
+
+[node name="GameOver" type="Node2D" unique_id=240354240]
+script = ExtResource("1_p4wjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1652592420]
+position = Vector2(581.8645, 324)
+scale = Vector2(0.6879611, 0.68723404)
+texture = ExtResource("2_p4wjp")
+
+[node name="ButtonReiniciar" type="Button" parent="." unique_id=1068200205]
+offset_left = 423.0
+offset_top = 325.0
+offset_right = 540.0
+offset_bottom = 411.0
+
+[node name="ButtonSair" type="Button" parent="." unique_id=560030873]
+offset_left = 711.0
+offset_top = 328.0
+offset_right = 840.0
+offset_bottom = 406.0
+
+[connection signal="pressed" from="ButtonReiniciar" to="." method="reiniciar"]
+[connection signal="pressed" from="ButtonSair" to="." method="sair"]

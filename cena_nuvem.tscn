@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bf1en1f5dx4v5"]
+
+[ext_resource type="Script" uid="uid://bhbssde2wm5o0" path="res://script_nuvem.gd" id="1_xi0yg"]
+[ext_resource type="Texture2D" uid="uid://dlgcit612j5ii" path="res://Imagens_Copas/Céu Pixelado com Sol Radiante.png" id="2_xi0yg"]
+
+[node name="Nuvem" type="Node2D" unique_id=365300541]
+script = ExtResource("1_xi0yg")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=487080364]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=801559940]
+motion_mirroring = Vector2(9400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2029513902]
+position = Vector2(529.7472, 103.00003)
+scale = Vector2(4.371319, 3.4696133)
+texture = ExtResource("2_xi0yg")

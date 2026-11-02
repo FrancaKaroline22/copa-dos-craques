@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://blq4n3nwxc3d7"]
+
+[ext_resource type="Script" uid="uid://cfhwjx2i0dvcc" path="res://script_pausa.gd" id="1_4l2li"]
+
+[node name="pausa" type="Node2D" unique_id=365191730]
+process_mode = 3
+script = ExtResource("1_4l2li")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=433528096]
+offset_right = 1151.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 0.3529412)
+
+[node name="Label" type="Label" parent="." unique_id=861366056]
+offset_right = 1149.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 59
+text = "<< Pressione ENTER  >>"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cx4kdoraxx42g"]
+
+[ext_resource type="Script" uid="uid://urpi0m1tppif" path="res://script_HUD.gd" id="1_v2j14"]
+[ext_resource type="Texture2D" uid="uid://776c46jbpb17" path="res://Imagens_Copas/Retrato Pixelado Brasileiro com Faixa Verde e Amarela.png" id="2_bp6f7"]
+[ext_resource type="PackedScene" uid="uid://blq4n3nwxc3d7" path="res://cena_pausa.tscn" id="3_bp6f7"]
+
+[node name="HUD" type="Node2D" unique_id=1480817942]
+script = ExtResource("1_v2j14")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=15316424]
+layer = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground" unique_id=1168764325]
+position = Vector2(66.5, 64)
+scale = Vector2(0.08288576, 0.08129065)
+texture = ExtResource("2_bp6f7")
+
+[node name="Label" type="Label" parent="ParallaxBackground" unique_id=1053655117]
+offset_left = 117.0
+offset_top = 63.0
+offset_right = 164.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 32
+text = "X 4"
+
+[node name="pausa" parent="ParallaxBackground" unique_id=365191730 instance=ExtResource("3_bp6f7")]
+position = Vector2(1, 5)

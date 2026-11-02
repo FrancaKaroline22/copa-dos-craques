@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b7tvjc3w8f4rp"]
+
+[ext_resource type="PackedScene" uid="uid://dko04rw3aw0qo" path="res://cena_jogador.tscn" id="2_5fdea"]
+[ext_resource type="Texture2D" uid="uid://byvwml2ioer4f" path="res://Imagens_Copas/cenario_copa_transparente.png" id="3_6bdly"]
+[ext_resource type="PackedScene" uid="uid://4acqj7530toc" path="res://cena_inimigo1.tscn" id="3_v5pcj"]
+[ext_resource type="PackedScene" uid="uid://ba3i6ir4tmqf1" path="res://cena_inimigo2.tscn" id="4_2r50s"]
+[ext_resource type="PackedScene" uid="uid://sclf25d6u7ft" path="res://cena_chefao.tscn" id="5_j1lpk"]
+[ext_resource type="PackedScene" uid="uid://bf1en1f5dx4v5" path="res://cena_nuvem.tscn" id="6_6bdly"]
+[ext_resource type="PackedScene" uid="uid://cx4kdoraxx42g" path="res://cena_hud.tscn" id="6_08fst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64uw6"]
+size = Vector2(144.875, 281.6875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r67k"]
+size = Vector2(247.5, 174.5)
+
+[node name="Fase" type="Node2D" unique_id=934340607]
+position = Vector2(0, 6)
+
+[node name="Nuvem" parent="." unique_id=365300541 instance=ExtResource("6_6bdly")]
+position = Vector2(382, 11)
+
+[node name="HUD" parent="." unique_id=1480817942 instance=ExtResource("6_08fst")]
+position = Vector2(5, -9)
+
+[node name="Cenario" type="StaticBody2D" parent="." unique_id=519029942]
+position = Vector2(1080, 616)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cenario" unique_id=855965258]
+position = Vector2(491.5001, -276.5)
+scale = Vector2(1.5536418, 1.6899036)
+texture = ExtResource("3_6bdly")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cenario" unique_id=1116216062]
+position = Vector2(-377, -14.000019)
+scale = Vector2(1.0244732, 0.8549981)
+polygon = PackedVector2Array(-676.4452, 4.678406, 230.3623, 8.187134, 236.219, -112.280945, 330.9018, -104.09381, 337.73456, 4.678406, 1031.7498, 3.508789, 1034.6781, -77.19318, 1043.4631, -95.90662, 1038.5825, -119.29852, 1093.2448, -122.80731, 1095.197, -84.21069, 1116.6715, -84.21069, 1114.7192, -3.508789, 1184.9993, -3.508789, 1343.1293, -3.508789, 1564, -3, 2424.661, -3.508789, 2397.3296, 57.31006, 790.65027, 52.631714, -662.7796, 65.49725)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cenario" unique_id=1229518243]
+position = Vector2(-1005, -45)
+shape = SubResource("RectangleShape2D_64uw6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cenario" unique_id=24231904]
+position = Vector2(2128, -88)
+shape = SubResource("RectangleShape2D_64uw6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Cenario" unique_id=730386540]
+position = Vector2(1562, -102.75)
+shape = SubResource("RectangleShape2D_3r67k")
+one_way_collision = true
+
+[node name="Jogador" parent="." unique_id=297150345 instance=ExtResource("2_5fdea")]
+position = Vector2(112, 341)
+
+[node name="Inimigo1" parent="." unique_id=706790748 instance=ExtResource("3_v5pcj")]
+position = Vector2(1527, 515)
+
+[node name="Inimigo2" parent="." unique_id=879218546 instance=ExtResource("4_2r50s")]
+position = Vector2(731, 540)
+
+[node name="Chefao" parent="." unique_id=171596232 instance=ExtResource("5_j1lpk")]
+position = Vector2(2890, 500)
